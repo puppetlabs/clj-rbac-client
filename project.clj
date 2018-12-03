@@ -1,8 +1,8 @@
 (defn deploy-info
   [url]
   {:url url
-   :username :env/nexus_jenkins_username
-   :password :env/nexus_jenkins_password
+   :username :env/clojars_jenkins_username
+   :password :env/clojars_jenkins_password
    :sign-releases false})
 
 (defproject puppetlabs/rbac-client "0.9.3-SNAPSHOT"
@@ -39,5 +39,8 @@
 
   :test-paths ["test"]
 
-  :deploy-repositories [["releases" ~(deploy-info "https://artifactory.delivery.puppetlabs.net/artifactory/clojure-releases__local/")]
-                        ["snapshots" ~(deploy-info "https://artifactory.delivery.puppetlabs.net/artifactory/clojure-snapshots__local/")]])
+  :deploy-repositories [["releases" ~(deploy-info "https://clojars.org/repo")]
+                        ["snapshots" ~(deploy-info {:url "https://artifactory.delivery.puppetlabs.net/artifactory/clojure-snapshots__local/"
+                                                    :username :env/nexus_jenkins_password
+                                                    :password :env/nexus_jenkins_password
+                                                    :sign-releases false})]])
