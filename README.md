@@ -24,12 +24,17 @@ The activity service protocol should be considered temporary and unstable. It's
 unclear to me how well this matches the activity reporting service or how stable
 that protocol is.
 
-## Maintenance
+## Testing
 
-Maintainer: Dan Lidral-Porter <dlp@puppet.com>.
+The tests require pki files in the `dev-resources/ssl/` directory of:
+  * `ca.pem`: a CA cert with the CN of "puppet"
+  * `key.pem`: a node private key
+  * `cert.pem`: a cert signed by `ca.pem` for the private key at `key.pem` with a CN of "localhost"
+  * `alternate-ca.pem`: a valid but untrusted CA cert
 
-Tickets: [Puppet Enterprise [Internal]](https://tickets.puppetlabs.com/browse/PE).
-Make sure to set the scrum team to "PE Core".
+The repo contains these files needed for testing, though if needed you may
+want to read `dev-resources/gen-pki.sh` for the commands to generate additional
+sets of files.
 
 ## License
 
