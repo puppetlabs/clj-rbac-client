@@ -1,3 +1,5 @@
+### Unreleased
+*  update clj-parent to 5.3.6
 ### 1.1.4
  * add optional identity provider id into RBAC subject
  * update clj-parent to 5.2.11
