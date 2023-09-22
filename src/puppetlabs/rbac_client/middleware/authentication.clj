@@ -9,6 +9,8 @@
             [schema.core :as sc]
             [slingshot.slingshot :refer [throw+ try+]]))
 
+;; adding a comment to test PRs
+;; and another
 (def ^:private ^:const authn-header "x-authentication")
 (def ^:private ^:const authn-param "token")
 (def ^:private ^:const internal-subject-key ::rbac-subject)
