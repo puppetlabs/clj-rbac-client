@@ -15,6 +15,14 @@ The clients use ssl authorization via the global.certs keys.
 - `global.certs.ssl-cert`: the cert for this clients identity.
 - `global.certs.ssl-ca-cert`: the ca-cert for this clients cert and the upstream service.
 
+Authenticated and unauthenticated clients have different connection limits via the
+rbac-consumer or activity-consumer settings.
+
+- `rbac-consumer.max-connections-total-auth`: total connection limit authenticated client
+- `rbac-consumer.max-connections-per-route-auth`: connection limit per route for authenticated client
+- `rbac-consumer.max-connections-total-unauth`: total connection limit unauthenticated client
+- `rbac-consumer.max-connections-per-route-unauth`: connection limit per route for unauthenticated client
+
 The location of the RBAC and Activity services are configured with the
 `rbac-consumer.api-url` and `activity-consumer.api.url` settings respectivetly.
 
