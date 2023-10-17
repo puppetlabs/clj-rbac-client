@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: puppetlabs.rbac_client \n"
-"X-Git-Ref: 2409cbd4165f6741a5d775b812edef71325d66ee\n"
+"X-Git-Ref: 710c675d98f78e6cecfb49eb628c16177fb61f86\n"
 "Report-Msgid-Bugs-To: docs@puppet.com\n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
@@ -51,9 +51,44 @@ msgstr ""
 msgid "Route requires authentication"
 msgstr ""
 
-#. DOCS REVIEWED
+#: src/puppetlabs/rbac_client/services/activity.clj
+msgid ""
+"Connection limit per route for authenticated clients has been set to {0} for "
+"the activity service."
+msgstr ""
+
+#: src/puppetlabs/rbac_client/services/activity.clj
+msgid ""
+"Total connection limit for authenticated clients has been set to {0} for the "
+"activity service."
+msgstr ""
+
 #: src/puppetlabs/rbac_client/services/rbac.clj
 msgid "Error parsing UUID {0}"
+msgstr ""
+
+#: src/puppetlabs/rbac_client/services/rbac.clj
+msgid ""
+"Connection limit per route for authenticated clients has been set to {0} for "
+"the RBAC service."
+msgstr ""
+
+#: src/puppetlabs/rbac_client/services/rbac.clj
+msgid ""
+"Total connection limit for authenticated clients has been set to {0} for the "
+"RBAC service."
+msgstr ""
+
+#: src/puppetlabs/rbac_client/services/rbac.clj
+msgid ""
+"Connection limit per route for unauthenticated clients has been set to {0} "
+"for the RBAC service."
+msgstr ""
+
+#: src/puppetlabs/rbac_client/services/rbac.clj
+msgid ""
+"Total connection limit for unauthenticated clients has been set to {0} for "
+"the RBAC service."
 msgstr ""
 
 #: src/puppetlabs/rbac_client/services/rbac.clj
