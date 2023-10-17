@@ -50,8 +50,9 @@
   (init [this context]
     (let [api-url (get-in-config [:activity-consumer :api-url])
           ssl-config (get-in-config [:global :certs])
-          route-limit {:max-connections-per-route 20}
-          client (create-client (merge route-limit ssl-config))]
+          authenticated-connection-limits {:max-connections-per-route (get-in-config [:activity-consumer :max-connections-per-route-auth] 20)
+                                           :max-connections-total (get-in-config [:activity-consumer :max-connections-total-auth] 20)}
+          client (create-client (merge authenticated-connection-limits ssl-config))]
       (assoc context
              :client client
              :supports-v2-api (atom true)

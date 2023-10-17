@@ -112,10 +112,14 @@
 
   (init [_ tk-ctx]
     (if-let [rbac-url (get-in-config [:rbac-consumer :api-url])]
-      (let [ssl-config (get-in-config [:global :certs])
-            route-limit {:max-connections-per-route 20}
-            certified-client (create-client (merge route-limit ssl-config))
-            uncertified-client (create-client (merge route-limit (select-keys ssl-config [:ssl-ca-cert])))]
+      (let [ssl-config (get-in-config [:global :certs]) 
+            authenticated-connection-limits {:max-connections-per-route (get-in-config [:rbac-consumer :max-connections-per-route-auth] 20)
+                                             :max-connections-total (get-in-config [:rbac-consumer :max-connections-total-auth] 20)}
+            unauthenticated-connection-limits {:max-connections-per-route (get-in-config [:rbac-consumer :max-connections-per-route-unauth] 20)
+                                               :max-connections-total (get-in-config [:rbac-consumer :max-connections-total-unauth] 20)}
+            certified-client (create-client (merge authenticated-connection-limits ssl-config))
+            uncertified-client (create-client (merge unauthenticated-connection-limits (select-keys ssl-config [:ssl-ca-cert])))]
+        
         (assoc tk-ctx
                :client certified-client
                :uncertified-client uncertified-client
