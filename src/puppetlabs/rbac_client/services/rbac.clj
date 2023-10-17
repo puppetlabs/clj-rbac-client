@@ -120,6 +120,10 @@
             certified-client (create-client (merge authenticated-connection-limits ssl-config))
             uncertified-client (create-client (merge unauthenticated-connection-limits (select-keys ssl-config [:ssl-ca-cert])))]
         
+        (log/info (i18n/trs "Connection limit per route for authenticated clients has been set to {0} for the RBAC service." (:max-connections-per-route authenticated-connection-limits)))
+        (log/info (i18n/trs "Total connection limit for authenticated clients has been set to {0} for the RBAC service." (:max-connections-total authenticated-connection-limits)))
+        (log/info (i18n/trs "Connection limit per route for unauthenticated clients has been set to {0} for the RBAC service." (:max-connections-per-route unauthenticated-connection-limits)))
+        (log/info (i18n/trs "Total connection limit for unauthenticated clients has been set to {0} for the RBAC service." (:max-connections-total unauthenticated-connection-limits))) 
         (assoc tk-ctx
                :client certified-client
                :uncertified-client uncertified-client

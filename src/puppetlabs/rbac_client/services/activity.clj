@@ -1,6 +1,7 @@
 (ns puppetlabs.rbac-client.services.activity
   (:require
    [clojure.tools.logging :as log]
+   [puppetlabs.i18n.core :as i18n]
    [puppetlabs.rbac-client.protocols.activity :refer [ActivityReportingService]]
    [puppetlabs.http.client.common :as http]
    [puppetlabs.http.client.sync :refer [create-client]]
@@ -53,6 +54,8 @@
           authenticated-connection-limits {:max-connections-per-route (get-in-config [:activity-consumer :max-connections-per-route-auth] 20)
                                            :max-connections-total (get-in-config [:activity-consumer :max-connections-total-auth] 20)}
           client (create-client (merge authenticated-connection-limits ssl-config))]
+      (log/info (i18n/trs "Connection limit per route for authenticated clients has been set to {0} for the activity service." (:max-connections-per-route authenticated-connection-limits)))
+      (log/info (i18n/trs "Total connection limit for authenticated clients has been set to {0} for the activity service." (:max-connections-total authenticated-connection-limits)))
       (assoc context
              :client client
              :supports-v2-api (atom true)
