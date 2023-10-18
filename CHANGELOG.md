@@ -1,5 +1,7 @@
-### Unreleased
+### 1.1.5
 *  update clj-parent to 5.3.6
+*  add configurable connection limits for authenticated and unauthenticated client
+
 ### 1.1.4
  * add optional identity provider id into RBAC subject
  * update clj-parent to 5.2.11
